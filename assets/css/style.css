@@ -6,6 +6,23 @@ body {
 } 
 input{
     width:25px; 
-    height:25px; 
-    
+    height:25px;    
+}
+h1{
+    text-align: center;
+    width: 100%;
+    color: #0DD8F3;
+    margin: 80px auto;
+    font-size: 3em;
+    font-family: Georgia, serif;
+    text-shadow: 2px 2px black;
+}
+#tableroBuscaminas{
+    position: absolute;
+    left: 480px;
+}
+.reinicio{
+    position: absolute;
+    left: 260px;
+    top: 202px;
 }

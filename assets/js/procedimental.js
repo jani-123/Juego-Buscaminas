@@ -1,4 +1,5 @@
-function creaMatriz() {
+function creaMatriz()
+{
     var matriz = [];
     for (var i = 0; i < 7; i++) {
         matriz[i] = [];
@@ -9,30 +10,33 @@ function creaMatriz() {
     return matriz;
 }
 
-function creaMinas(elementoId) {
-    var caja = document.getElementById(elementoId);
+function creaMinas() 
+{
+    var caja = document.getElementById('tableroBuscaminas');
     caja.innerHTML = '';
     for (var i = 0; i < 7; i++) {
         for (var j = 0; j < 7; j++) {
-            caja.innerHTML += '<input type="button" name="btn" id="' + i + '_' + j + '" value=" "/>';
+            caja.innerHTML += '<input type="button" class="btn btn-primary" name="btn" id="' + i + '_' + j + '" value=" "/>';
         }
         caja.innerHTML += '<br/>';
     }
 }
-function Aleatorio(min, max) {
+
+function Aleatorio(min, max) 
+{
     return Math.floor(Math.random() * (max - min + 1));
 }
-function generaBuscanimas(maximoMinas) { // crea las posisiones aleatorias para las minas
+
+function generaBuscanimas(maximoMinas) 
+{ 
     var campo = creaMatriz();
     var contadordeMinas = 0;
     while (contadordeMinas < maximoMinas) {
         var minasAleatorias = Aleatorio(0, 1);
         var posicionAleatoria = [Aleatorio(0, 7 - 1), Aleatorio(0, 7 - 1)];
-        console.log("piscion aleatoria", posicionAleatoria);
-
+        console.log(posicionAleatoria);
         if (!campo[posicionAleatoria[0]][posicionAleatoria[1]]) {
             contadordeMinas += (minasAleatorias) ? 1 : 0;
-
             if (minasAleatorias) {
                 campo[posicionAleatoria[0]][posicionAleatoria[1]] = '*';
                 for (var x = posicionAleatoria[0] - 1; x <= posicionAleatoria[0] + 1; x++) {
@@ -48,14 +52,14 @@ function generaBuscanimas(maximoMinas) { // crea las posisiones aleatorias para 
     }
     return campo;
 }
-function jugar() {
+
+function jugar() 
+{
     var numeroMinas = 7;
     var intentosTotales = (7 * 7) - numeroMinas;
-
-    creaMinas('tableroBuscaminas');
+    creaMinas();
     matrix = generaBuscanimas(numeroMinas);
     buttons = document.getElementsByName('btn');
-
     for (var i = 0; i < buttons.length; i++) {
         var eventoClick = document.getElementById(buttons[i].id);
         eventoClick.addEventListener("click", jugare, false);
@@ -77,4 +81,5 @@ function jugar() {
         }
     }
 }
+
 jugar();
